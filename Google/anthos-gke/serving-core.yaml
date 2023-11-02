@@ -283,7 +283,7 @@ spec:
       - img
   scope: Namespaced
   versions:
-    - name: v1alpha1
+    - name: v2
       served: true
       storage: true
       subresources:
@@ -326,7 +326,7 @@ metadata:
 spec:
   group: networking.internal.knative.dev
   versions:
-    - name: v1alpha1
+    - name: v2
       served: true
       storage: true
       subresources:
@@ -447,7 +447,7 @@ metadata:
 spec:
   group: networking.internal.knative.dev
   versions:
-    - name: v1alpha1
+    - name: v2
       served: true
       storage: true
       subresources:
@@ -504,7 +504,7 @@ metadata:
 spec:
   group: autoscaling.internal.knative.dev
   versions:
-    - name: v1alpha1
+    - name: v2
       served: true
       storage: true
       subresources:
@@ -558,7 +558,7 @@ metadata:
 spec:
   group: autoscaling.internal.knative.dev
   versions:
-    - name: v1alpha1
+    - name: v2
       served: true
       storage: true
       subresources:
@@ -748,7 +748,7 @@ metadata:
 spec:
   group: networking.internal.knative.dev
   versions:
-    - name: v1alpha1
+    - name: v2
       served: true
       storage: true
       subresources:
@@ -937,7 +937,7 @@ spec:
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: caching.internal.knative.dev/v1alpha1
+apiVersion: caching.internal.knative.dev/v2
 kind: Image
 metadata:
   name: queue-proxy
