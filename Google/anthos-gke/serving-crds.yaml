@@ -22,7 +22,7 @@ metadata:
 spec:
   group: networking.internal.knative.dev
   versions:
-    - name: v1alpha1
+    - name: v2
       served: true
       storage: true
       subresources:
@@ -143,7 +143,7 @@ metadata:
 spec:
   group: networking.internal.knative.dev
   versions:
-    - name: v1alpha1
+    - name: v2
       served: true
       storage: true
       subresources:
@@ -200,7 +200,7 @@ metadata:
 spec:
   group: autoscaling.internal.knative.dev
   versions:
-    - name: v1alpha1
+    - name: v2
       served: true
       storage: true
       subresources:
@@ -254,7 +254,7 @@ metadata:
 spec:
   group: autoscaling.internal.knative.dev
   versions:
-    - name: v1alpha1
+    - name: v2
       served: true
       storage: true
       subresources:
@@ -444,7 +444,7 @@ metadata:
 spec:
   group: networking.internal.knative.dev
   versions:
-    - name: v1alpha1
+    - name: v2
       served: true
       storage: true
       subresources:
@@ -652,7 +652,7 @@ spec:
       - img
   scope: Namespaced
   versions:
-    - name: v1alpha1
+    - name: v2
       served: true
       storage: true
       subresources:
