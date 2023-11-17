@@ -19,7 +19,9 @@ metadata:
   namespace: knative-serving
   labels:
     app: "default-domain"
-    serving.knative.dev/release: "v0.21.0"
+    app.kubernetes.io/component: default-domain-job
+    app.kubernetes.io/name: knative-serving
+    app.kubernetes.io/version: "1.12.0"
 spec:
   template:
     metadata:
@@ -27,14 +29,17 @@ spec:
         sidecar.istio.io/inject: "false"
       labels:
         app: "default-domain"
+        app.kubernetes.io/component: default-domain-job
+        app.kubernetes.io/name: knative-serving
+        app.kubernetes.io/version: "1.12.0"
     spec:
       serviceAccountName: controller
       containers:
         - name: default-domain
           # This is the Go import path for the binary that is containerized
           # and substituted here.
-          image: gcr.io/knative-releases/knative.dev/serving/cmd/default-domain@sha256:ee79c1b6c9e07d6bbdf8ff6a53a30b7c288140c1a253e4e545251fe2e8911d44
-          args: ["-magic-dns=nip.io"]
+          image: gcr.io/knative-releases/knative.dev/serving/cmd/default-domain@sha256:c79781d920bb99ee4281acde77b0818e7bb1e88943874946d341b32d9438ad36
+          args: ["-magic-dns=sslip.io"]
           ports:
             - name: http
               containerPort: 8080
@@ -45,6 +50,22 @@ spec:
             httpGet:
               port: 8080
             failureThreshold: 6
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 1000m
+              memory: 1000Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
           env:
             - name: POD_NAME
               valueFrom:
@@ -64,7 +85,9 @@ metadata:
   namespace: knative-serving
   labels:
     app: default-domain
-    serving.knative.dev/release: "v0.21.0"
+    app.kubernetes.io/component: default-domain-job
+    app.kubernetes.io/name: knative-serving
+    app.kubernetes.io/version: "1.12.0"
 spec:
   selector:
     app: default-domain
